@@ -1,0 +1,51 @@
+﻿<div class="navbar navbar-custom navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("The Jammer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+    </div>
+</div>
+
+@model TheJammer.Models.User
+
+<h2>Profile</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+            
+        </dd>
+
+        <br />
+
+        <dt>
+            <label for="LastName">Last Name</label>
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        
+
+    </dl>
+</div>
