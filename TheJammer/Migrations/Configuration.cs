@@ -10,6 +10,7 @@ namespace TheJammer.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "TheJammer.Models.TheJammerContext";
         }
 

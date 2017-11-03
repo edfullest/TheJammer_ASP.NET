@@ -7,13 +7,13 @@ namespace TheJammer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Hi : IMigrationMetadata
+    public sealed partial class InitialUsersCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Hi));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialUsersCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711030111311_Hi"; }
+            get { return "201711031724584_InitialUsersCreate"; }
         }
         
         string IMigrationMetadata.Source

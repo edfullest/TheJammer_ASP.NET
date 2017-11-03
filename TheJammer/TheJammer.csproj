@@ -153,9 +153,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711030111311_Hi.cs" />
-    <Compile Include="Migrations\201711030111311_Hi.Designer.cs">
-      <DependentUpon>201711030111311_Hi.cs</DependentUpon>
+    <Compile Include="Migrations\201711031724584_InitialUsersCreate.cs" />
+    <Compile Include="Migrations\201711031724584_InitialUsersCreate.Designer.cs">
+      <DependentUpon>201711031724584_InitialUsersCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TheJammerContext.cs" />
@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\C\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -224,8 +225,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711030111311_Hi.resx">
-      <DependentUpon>201711030111311_Hi.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711031724584_InitialUsersCreate.resx">
+      <DependentUpon>201711031724584_InitialUsersCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
