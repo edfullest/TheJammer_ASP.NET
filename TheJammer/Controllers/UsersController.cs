@@ -53,7 +53,6 @@ namespace TheJammer.Controllers
             string Name = Request["Name"];
             string LastName = Request["LastName"];
             string Email = Request["Email"];
-            System.Diagnostics.Debug.WriteLine("WAZAAAAA");
             if (Password == RepeatPassword && !string.IsNullOrEmpty(Name)
                                            && !string.IsNullOrEmpty(LastName)
                                            && !string.IsNullOrEmpty(Email)

@@ -49,14 +49,12 @@ namespace TheJammer.Controllers
         public ActionResult Create([Bind(Include = "ID,Description")] Comment comment)
         {
             User CurrentUser = (User)Session["User"];
-            System.Diagnostics.Debug.WriteLine("ID DE CURRENT USER: " + CurrentUser.ID);
             if (ModelState.IsValid)
             {
                 comment.UserID = CurrentUser.ID;
                 comment.CommentDate = DateTime.Today;
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                System.Diagnostics.Debug.WriteLine("ID DE CURRENT USER: " + CurrentUser.ID);
             }
             
             return RedirectToAction("Details", "Users", new { id = CurrentUser.ID } );
