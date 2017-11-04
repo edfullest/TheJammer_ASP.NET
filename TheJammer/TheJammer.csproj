@@ -148,6 +148,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -157,7 +158,16 @@
     <Compile Include="Migrations\201711031724584_InitialUsersCreate.Designer.cs">
       <DependentUpon>201711031724584_InitialUsersCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711031754552_InitialCommentsCreate.cs" />
+    <Compile Include="Migrations\201711031754552_InitialCommentsCreate.Designer.cs">
+      <DependentUpon>201711031754552_InitialCommentsCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711040244386_UpdateCommentsTable.cs" />
+    <Compile Include="Migrations\201711040244386_UpdateCommentsTable.Designer.cs">
+      <DependentUpon>201711040244386_UpdateCommentsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\TheJammerContext.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -199,16 +209,13 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Comments\" />
     <Folder Include="Views\C\" />
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +234,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711031724584_InitialUsersCreate.resx">
       <DependentUpon>201711031724584_InitialUsersCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711031754552_InitialCommentsCreate.resx">
+      <DependentUpon>201711031754552_InitialCommentsCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711040244386_UpdateCommentsTable.resx">
+      <DependentUpon>201711040244386_UpdateCommentsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

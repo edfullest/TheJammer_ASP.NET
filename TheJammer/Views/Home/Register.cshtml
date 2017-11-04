@@ -46,3 +46,40 @@
         </div>
     </div>
 }
+
+@model IEnumerable<TheJammer.Models.Comment>
+<h2>
+    Comments from our users
+</h2>
+
+@foreach (var item in Model)
+{
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="https://image.flaticon.com/icons/svg/149/149072.svg" alt="Profile" width="128" height="128">
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        @item.User.Name
+                    </div>
+                    <div class="row">
+                        @item.User.Email
+                    </div>
+                    <div class="row">
+                        @item.CommentDate
+                    </div>
+                </div>
+                <span class="col-separator"></span>
+                <div class="col-md-3">
+
+                    <span class="pull-left">
+                        @item.Description
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

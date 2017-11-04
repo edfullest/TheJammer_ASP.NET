@@ -1,4 +1,5 @@
-﻿<div class="navbar navbar-custom navbar-fixed-top">
+﻿
+<div class="navbar navbar-custom navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -24,7 +25,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.Name)
-            
+
         </dd>
 
         <br />
@@ -32,7 +33,7 @@
         <dt>
             <label for="LastName">Last Name</label>
         </dt>
-        
+
         <dd>
             @Html.DisplayFor(model => model.LastName)
         </dd>
@@ -44,8 +45,17 @@
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
-
-        
-
     </dl>
 </div>
+
+<h3>Leave us a comment!</h3>
+@using (Html.BeginForm("Create", "Comments", FormMethod.Post, new { @class = "form-group", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <textarea class="form-control" style="min-width: 100%" rows="5" id="Description" name="Description"></textarea>
+    <br />
+    <div class="col-lg-10 text-center">
+        <input type="submit" value="Send" style="min-width: 30%" class="btn btn-primary btn-lg" />
+    </div>
+
+}

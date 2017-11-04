@@ -10,136 +10,113 @@ using TheJammer.Models;
 
 namespace TheJammer.Controllers
 {
-    public class UsersController : Controller
+    public class CommentsController : Controller
     {
         private TheJammerContext db = new TheJammerContext();
 
-        // GET: Users
+        // GET: Comments
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View(db.Comments.ToList());
         }
 
-        // GET: Users/Details/5
+        // GET: Comments/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Comment comment = db.Comments.Find(id);
+            if (comment == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(comment);
         }
 
-        // GET: Users/Create
+        // GET: Comments/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Comments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,LastName,Age,Country,Email,Password, RepeatPassword")] User user)
+        public ActionResult Create([Bind(Include = "ID,Description")] Comment comment)
         {
-            string RepeatPassword = Request["RepeatPassword"];
-            string Password = Request["Password"];
-            string Name = Request["Name"];
-            string LastName = Request["LastName"];
-            string Email = Request["Email"];
-            System.Diagnostics.Debug.WriteLine("WAZAAAAA");
-            if (Password == RepeatPassword && !string.IsNullOrEmpty(Name)
-                                           && !string.IsNullOrEmpty(LastName)
-                                           && !string.IsNullOrEmpty(Email)
-                                           && !string.IsNullOrEmpty(Password)
-                                           )
+            User CurrentUser = (User)Session["User"];
+            System.Diagnostics.Debug.WriteLine("ID DE CURRENT USER: " + CurrentUser.ID);
+            if (ModelState.IsValid)
             {
-                db.Users.Add(user);
+                comment.UserID = CurrentUser.ID;
+                comment.CommentDate = DateTime.Today;
+                db.Comments.Add(comment);
                 db.SaveChanges();
-                Session["User"] = user;
-                return RedirectToAction("Details/" + user.ID);
+                System.Diagnostics.Debug.WriteLine("ID DE CURRENT USER: " + CurrentUser.ID);
             }
             
-            return RedirectToAction("Register", "Home");
+            return RedirectToAction("Details", "Users", new { id = CurrentUser.ID } );
         }
 
-        // GET: Users/Edit/5
+        // GET: Comments/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Comment comment = db.Comments.Find(id);
+            if (comment == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(comment);
         }
 
-        // POST: Users/Edit/5
+        // POST: Comments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,LastName,Age,Country")] User user)
+        public ActionResult Edit([Bind(Include = "ID,Description,CommentDate")] Comment comment)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(comment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(user);
+            return View(comment);
         }
 
-        // GET: Users/Delete/5
+        // GET: Comments/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Comment comment = db.Comments.Find(id);
+            if (comment == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(comment);
         }
 
-        // POST: Users/Delete/5
+        // POST: Comments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
+            Comment comment = db.Comments.Find(id);
+            db.Comments.Remove(comment);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login([Bind(Include = "Email,Password")] User user)
-        {
-            var obj = db.Users.Where(u => u.Email.Equals(user.Email) && u.Password.Equals(user.Password)).FirstOrDefault();
-            if (obj != null)
-            {
-                Session["User"] = obj;
-                return RedirectToAction("Details/" + obj.ID);
-            }
-
-            return RedirectToAction("Login", "Home");
-
-
         }
 
         protected override void Dispose(bool disposing)

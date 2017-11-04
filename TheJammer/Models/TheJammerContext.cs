@@ -20,5 +20,7 @@ namespace TheJammer.Models
         }
 
         public System.Data.Entity.DbSet<TheJammer.Models.User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<TheJammer.Models.Comment> Comments { get; set; }
     }
 }
